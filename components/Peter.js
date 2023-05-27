@@ -32,7 +32,7 @@ export default (world, pos, size) => {
         pos.y,
         size.width,
         size.height,
-        { label: 'Peter' }
+        { label: 'Peter', inertia: Infinity }
     )
 
     Matter.World.add(world, initialPeter)

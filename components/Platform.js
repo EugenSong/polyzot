@@ -31,9 +31,10 @@ export default (world, label, pos, size) => {
         size.height,
         {
             label,
-            isStatic: true
+            isStatic: true,
         }
     )
+
     Matter.World.add(world, initialPlatform)
 
     return {
