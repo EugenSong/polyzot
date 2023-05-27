@@ -5,7 +5,7 @@ import { Link } from "expo-router";
 import { GameEngine } from 'react-native-game-engine';
 
 import entities from '../entities';
-import { physics, updatePlatforms, updatePeter } from '../physics';
+import { physics, updatePlatforms, updatePeter, checkForCollision } from '../physics';
 
 import ScoreBoard from "../ScoreBoard";
 
@@ -20,7 +20,7 @@ export default function Page() {
 
       <GameEngine
         ref={(ref) => { setGameEngine(ref) }}
-        systems={[physics, updatePlatforms, updatePeter]}
+        systems={[physics, updatePlatforms, updatePeter, checkForCollision]} 
         entities={entities()}
         running={running}
         onEvent={(e) => {
