@@ -8,7 +8,7 @@
 
 1. Go into home directory.
 
-2. Load dependencies using ```npm install``` 
+2. Load dependencies using `npm install`
 
 3. Run locally using `npx expo start`
 
