@@ -3,11 +3,13 @@ import { Link } from "expo-router";
 
 import SampleSound from "../sample-sound";
 
-
 export default function Page() {
+
+
   return (
     <View style={styles.container}>
       <View style={styles.main}>
+
         <Text style={styles.title}>Hello World</Text>
         <Text style={styles.subtitle}>This is the first page of your app.</Text>
         <Link href="/game">Go to game</Link>

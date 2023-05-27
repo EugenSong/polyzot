@@ -7,12 +7,17 @@ import { GameEngine } from 'react-native-game-engine';
 import entities from '../entities';
 import { physics, updatePlatforms, updatePeter } from '../physics';
 
+import ScoreBoard from "../ScoreBoard";
+
 export default function Page() {
   const [running, setRunning] = useState(true)
   const [gameEngine, setGameEngine] = useState(null)
   const [currentPoints, setCurrentPoints] = useState(0)
   return (
     <View style={{ flex: 1 }}>
+
+      <ScoreBoard score={currentPoints} />
+
       <GameEngine
         ref={(ref) => { setGameEngine(ref) }}
         systems={[physics, updatePlatforms, updatePeter]}
