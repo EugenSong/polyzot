@@ -15,17 +15,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundler": "metro",
+      "favicon": "./assets/favicon.png"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
-    },
-    "web": {
-      "bundler": "metro",
-      "favicon": "./assets/favicon.png"
     },
     "scheme": "com.venushack.polyzot"
   }
