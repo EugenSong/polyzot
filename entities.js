@@ -1,38 +1,50 @@
-import React from "react";
 import Matter from "matter-js";
-import { Platform, Peter } from "./renderers";
+import Platform from "./components/Platform";
+import Peter from "./components/Peter";
 
-//-- Overriding this function because the original references HTMLElement
-//-- which will throw an error when running in a React Native context
-Matter.Common.isElement = () => false;
+import { Dimensions } from "react-native";
 
-//-- These variable will help us position our entities on the device's screen
+const { width, height } = Dimensions.get("window");
 
-
-export const Entities = () => {
+export default (restart) => {
   let engine = Matter.Engine.create({ enableSleeping: false });
   let world = engine.world;
 
-  let word_list = ["Banana", "Orange", "Apple"];
+  engine.gravity.y = 0.4;
 
-  // The origin of our world is in the top-left corner. Hence, the y-axis increases down the screen!
+  let platforms = {};
 
-  engine.gravity = { x: 0, y: 2 };
-  entities = {};
+  let spacing = 200;
+  let startHeight = 400;
 
-  entities["peter"] = {
-    position: [200, 200],
-    renderer: <Petr />,
-  };
-
-  for (var i = 0; i < word_list.length; i++) {
-    entities["platform" + i] = {
-      width: 100,
-      height: 50,
-      position: [200, 200 + i * 50],
-      renderer: <Platform />,
-    };
+  for (let i = 0; i < 6; i++) {
+    label = "platform" + i;
+    x = 70;
+    y = i * 200;
+    platforms[label] = Platform(
+      world,
+      label,
+      { x: x, y: y },
+      { height: 50, width: 100 }
+    );
+  }
+  for (let i = 0; i < 6; i++) {
+    label = "platform2" + i;
+    x = 330;
+    y = i * 200;
+    platforms[label] = Platform(
+      world,
+      label,
+      { x: x, y: y },
+      { height: 50, width: 100 }
+    );
   }
 
-  return entities;
+  return {
+    physics: { engine, world },
+
+    Peter: Peter(world, { x: 200, y: 0 }, { height: 80, width: 100 }),
+    ...platforms,
+    // platform1: Platform(world, 'platform1', { x: 200, y: 200 }, { height: 50, width: 200 }),
+  };
 };
