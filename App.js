@@ -1,20 +1,21 @@
 import React, { PureComponent } from "react";
-import { StyleSheet, StatusBar } from "react-native";
+import { AppRegistry, StyleSheet, StatusBar } from "react-native";
 import { GameEngine } from "react-native-game-engine";
-import { LevelOne } from "./entities";
+import { Platform } from "./renderers";
+import { MoveFinger } from "./systems";
+import { Entities } from "./entities";
 
-export default class App extends PureComponent {
-  constructor(props) {
-    super(props);
+export default class BestGameEver extends PureComponent {
+  constructor() {
+    super();
   }
 
   render() {
     return (
       <GameEngine
-        ref={"engine"}
-        style={styles.game}
-        systems={[]}
-        entities={LevelOne()}
+        style={styles.container}
+        systems={[MoveFinger]}
+        entities={Entities()}
       >
         <StatusBar hidden={true} />
       </GameEngine>
@@ -23,7 +24,10 @@ export default class App extends PureComponent {
 }
 
 const styles = StyleSheet.create({
-  game: {
-    backgroundColor: "#000",
+  container: {
+    flex: 1,
+    backgroundColor: "#FFF",
   },
 });
+
+AppRegistry.registerComponent("BestGameEver", () => BestGameEver);

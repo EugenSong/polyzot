@@ -1,30 +1,44 @@
-import { GameEngine } from "react-native-game-engine"
+import { GameEngine } from "react-native-game-engine";
 import React, { PureComponent } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Image } from "react-native";
+import peter from "./assets/petr-medium.png";
 
-const RADIUS = 20;
- 
-class Finger extends PureComponent {
+const WIDTH = 100;
+const HEIGHT = 20;
+
+class Platform extends PureComponent {
   render() {
-    const x = this.props.position[0] - RADIUS / 2;
-    const y = this.props.position[1] - RADIUS / 2;
+    const { position, width, height } = this.props;
+    const x = position[0] - WIDTH / 2;
+    console.log(width);
+    const y = position[1] - HEIGHT / 2;
+    return <View style={[styles.platform, { left: x, top: y }]} />;
+  }
+}
+
+class Petr extends PureComponent {
+  render() {
+    const { position } = this.props;
+    const x = position[0];
+    const y = position[1];
     return (
-      <View style={[styles.finger, { left: x, top: y }]} />
+      <View style={{ left: x, top: y }}>
+        <Image source={peter} />
+      </View>
     );
   }
 }
- 
+
 const styles = StyleSheet.create({
-  finger: {
+  platform: {
     borderColor: "#CCC",
     borderWidth: 4,
-    borderRadius: RADIUS * 2,
-    width: RADIUS * 2,
-    height: RADIUS * 2,
+    // borderRadius: 0,
+    width: WIDTH * 2,
+    height: HEIGHT * 2,
     backgroundColor: "pink",
-    position: "absolute"
-  }
+    position: "absolute",
+  },
 });
- 
-export { Finger };
 
+export { Platform, Petr };
