@@ -1,7 +1,7 @@
 import Matter from "matter-js";
 import React from "react";
 import { View, Image } from "react-native";
-import word1 from "../assets/words/food/banana-banana.png";
+import word1 from "../assets/game-screen/food/banana-banana.png";
 let styles = {
   platform: {
     borderWidth: 1,
