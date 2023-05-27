@@ -15,8 +15,9 @@
       "**/*"
     ],
     "ios": {
+      "supportsTablet": true,
       "bundler": "metro",
-      "supportsTablet": true
+      "favicon": "./assets/favicon.png"
     },
     "android": {
       "adaptiveIcon": {
