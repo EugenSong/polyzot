@@ -8,8 +8,10 @@
 
 1. Go into home directory.
 
-2. Run locally using `npx expo start`.
+2. Load dependencies using ```npm install``` 
+
+3. Run locally using `npx expo start`
 
 ### To run and share app from different networks:
 
-- Run locally using `npx expo start --tunnel`.
+- Run locally using `npx expo start --tunnel`
