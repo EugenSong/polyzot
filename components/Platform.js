@@ -2,9 +2,12 @@ import Matter from 'matter-js'
 import React from "react";
 import { View } from "react-native";
 
-
-const WIDTH = 100;
-const HEIGHT = 20;
+let styles = {
+    platform: {
+        borderWidth: 2,
+        borderColor: 'black',
+    }
+}
 
 const Platform = ({ body }) => {
     const { bounds, position } = body;
@@ -15,13 +18,27 @@ const Platform = ({ body }) => {
     const y = position.y - heightBody / 2;
 
     return (
-        <View style={[styles.platform, { left: x, top: y }]} />
+        <View style={[styles.platform, { width: widthBody, height: heightBody, left: x, top: y }]} />
     );
 }
 
-let styles = {
-    platform: {
-        borderWidth: 1,
-        borderColor: 'black',
+export default (world, label, pos, size) => {
+    const initialPlatform = Matter.Bodies.rectangle(
+        pos.x,
+        pos.y,
+        size.width,
+        size.height,
+        {
+            label,
+            isStatic: true
+        }
+    )
+    Matter.World.add(world, initialPlatform)
+
+    return {
+        body: initialPlatform,
+        pos,
+        renderer: <Platform />
     }
 }
+
