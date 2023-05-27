@@ -1,14 +1,13 @@
 import React from "react";
-import { Dimensions } from "react-native";
 import Matter from "matter-js";
-import { Platform, Petr } from "./renderers";
+import { Platform, Peter } from "./renderers";
 
 //-- Overriding this function because the original references HTMLElement
 //-- which will throw an error when running in a React Native context
 Matter.Common.isElement = () => false;
 
 //-- These variable will help us position our entities on the device's screen
-const { width, height } = Dimensions.get("window");
+
 
 export const Entities = () => {
   let engine = Matter.Engine.create({ enableSleeping: false });
