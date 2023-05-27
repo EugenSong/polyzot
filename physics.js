@@ -12,25 +12,26 @@ export const physics = (entities, { time }) => {
 
 export const updatePlatforms = (entities, { touches, time }) => {
     let speed = 0.02;
-    // for (entity in entities) {
-    //     const isPlatform = entity.includes('platform')
-    //     const curPlatform = entities[entity]
+    for (entity in entities) {
+        const isPlatform = entity.includes('platform')
+        const curPlatform = entities[entity]
 
-    //     if (isPlatform) {
-    //         const newPosition = {
-    //             x: curPlatform.position.x,
-    //             y: curPlatform.position.y + speed * time.delta,
-    //         };
-    //         Matter.Body.setPosition(curPlatform, newPosition)
-    //     }
-    // }
+        if (isPlatform) {
+            // console.log(curPlatform)
+            const newPosition = {
+                x: curPlatform.body.position.x,
+                y: curPlatform.body.position.y + speed * time.delta,
+            };
+            Matter.Body.setPosition(curPlatform.body, newPosition)
+        }
+    }
 
     return entities;
 }
 
 
 export const updatePeter = (entities, { touches }) => {
-    touches.filter(t => t.type === 'press')
+    touches.filter(t => t.type === 'start')
         .forEach(t => {
             Matter.Body.setVelocity(entities.Peter.body, {
                 x: 0,
