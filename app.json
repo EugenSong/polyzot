@@ -15,6 +15,7 @@
       "**/*"
     ],
     "ios": {
+      "bundler": "metro",
       "supportsTablet": true
     },
     "android": {
@@ -23,11 +24,6 @@
         "backgroundColor": "#ffffff"
       }
     },
-    "web": {
-      "bundler": "metro",
-      "favicon": "./assets/favicon.png"
-    },
     "scheme": "com.venushack.polyzot"
   }
 }
-
