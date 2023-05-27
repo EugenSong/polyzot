@@ -23,6 +23,8 @@ export const updatePlatforms = (entities, { touches, time }) => {
                 y: curPlatform.body.position.y + speed * time.delta,
             };
             Matter.Body.setPosition(curPlatform.body, newPosition)
+
+
         }
     }
 
@@ -48,4 +50,20 @@ export const updatePeter = (entities, { touches }) => {
     }
 
     return entities
+}
+
+export const checkForCollision = (entities, { time }) => {
+    for (entity in entities) {
+
+        const isPlatform = entity.includes('platform')
+        const curPlatform = entities[entity]
+
+        if (isPlatform) {
+
+            if (Matter.Collision.collides(curPlatform.body, entities.Peter.body) !== null) {
+                console.log("Collision occured");
+            }
+        }
+    }
+    return entities;
 }
