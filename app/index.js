@@ -1,6 +1,8 @@
 import { StyleSheet, Text, View } from "react-native";
 import { Link } from "expo-router";
 
+import SampleSound from "../sample-sound";
+
 
 export default function Page() {
   return (
@@ -10,6 +12,10 @@ export default function Page() {
         <Text style={styles.subtitle}>This is the first page of your app.</Text>
         <Link href="/game">Go to game</Link>
         <Link href="/selection">Go to selection</Link>
+      </View>
+
+      <View style={styles.sound}>
+        <SampleSound />
       </View>
     </View>
   );
@@ -35,4 +41,10 @@ const styles = StyleSheet.create({
     fontSize: 36,
     color: "#38434D",
   },
+  sound: {
+    marginTop: 100,
+    backgroundColor: "green",
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
 });
