@@ -19,28 +19,17 @@ export default restart => {
 
   for (let i = 0; i < 6; i++) {
     label = 'platform' + i
-    if (i % 2 == 0) {
-      for (let j = 0; j < 3; j++) {
-        x = j * width / 3 + width / 6
-        y = startHeight - i * spacing
-        platforms[label] = Platform(world, label, { x, y }, { width: 100, height: 50 })
-      }
-    }
-    else {
-      for (let j = 0; j < 2; j++) {
-        x = j * width / 2 + width / 4
-        y = startHeight - i * spacing
-        platforms[label] = Platform(world, label, { x, y }, { width: 100, height: 50 })
-      }
-    }
+    x = 100
+    y = i * 200
+    platforms[label] = Platform(world, label, { x: x, y: y }, { height: 50, width: 150 })
   }
 
   return {
     physics: { engine, world },
 
-    Peter: Peter(world, { x: 200, y: 0 }, { height: 50, width: 120 }),
-
+    Peter: Peter(world, { x: 200, y: 0 }, { height: 80, width: 100 }),
     ...platforms
+    // platform1: Platform(world, 'platform1', { x: 200, y: 200 }, { height: 50, width: 200 }),
   }
 }
 

@@ -4,15 +4,16 @@ import { View } from "react-native";
 
 let styles = {
     platform: {
-        borderWidth: 2,
+        borderWidth: 1,
         borderColor: 'black',
+        position: 'absolute',
     }
 }
 
-const Platform = ({ body }) => {
+const Platform = ({ body, width, height }) => {
     const { bounds, position } = body;
-    const widthBody = bounds.max.x - bounds.min.x
-    const heightBody = bounds.max.y - bounds.min.y
+    const widthBody = width
+    const heightBody = height
 
     const x = position.x - widthBody / 2;
     const y = position.y - heightBody / 2;
@@ -37,6 +38,8 @@ export default (world, label, pos, size) => {
 
     return {
         body: initialPlatform,
+        width: size.width,
+        height: size.height,
         pos,
         renderer: <Platform />
     }

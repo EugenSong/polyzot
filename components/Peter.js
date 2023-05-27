@@ -7,17 +7,15 @@ let styles = {
     peter: {
         borderWidth: 1,
         borderColor: 'black',
+        position: 'absolute',
     }
 }
 
-const Peter = ({ body }) => {
+const Peter = ({ body, width, height }) => {
 
     const { bounds, position } = body;
-    const widthBody = bounds.max.x - bounds.min.x
-    const heightBody = bounds.max.y - bounds.min.y
-
-    // console.log(widthBody, heightBody)
-    const { width, height } = Dimensions.get("window");
+    const widthBody = width
+    const heightBody = height
 
     const x = position.x - widthBody / 2;
     const y = position.y - heightBody / 2;
@@ -42,6 +40,8 @@ export default (world, pos, size) => {
     return {
         body: initialPeter,
         pos,
+        width: size.width,
+        height: size.height,
         renderer: <Peter />
     }
 }
