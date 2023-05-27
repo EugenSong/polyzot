@@ -42,7 +42,9 @@ export default function Page() {
           <Link href="/game">Go to Game</Link>
           <Link href="/">Go to Start</Link>
 
-          <Link href="/game" >Start Game</Link>
+
+            {/* selectedTopic val needs to be processed when Start Game Link pressed */}
+          <Link href="/game">Start Game</Link>
 
         </View>
       </View>
