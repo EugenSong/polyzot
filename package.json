@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
+    "@expo/vector-icons": "^13.0.0",
     "d3-interpolate": "^3.0.1",
     "expo": "~48.0.15",
     "expo-av": "~13.2.1",

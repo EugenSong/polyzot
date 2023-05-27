@@ -2,6 +2,10 @@ import { StyleSheet, Text, View, ImageBackground, Image } from "react-native";
 import { Link } from "expo-router";
 import SampleSound from "../sample-sound";
 import * as Animatable from 'react-native-animatable';
+import { Ionicons } from '@expo/vector-icons'; 
+import { useRef, useState, useEffect} from "react";
+import { Audio } from 'expo-av';
+
 
 const zoomOut = {
   0: {
@@ -19,6 +23,33 @@ const zoomOut = {
 };
 
 export default function Page() {
+  const [isSoundPlaying, setIsSoundPlaying] = useState(true);
+
+  useEffect(() => {
+    const soundObject = new Audio.Sound();
+    const playSound = async () => {
+      try {
+        await soundObject.loadAsync(require('../assets/cut-off-beg.mp3'));
+        await soundObject.playAsync();
+        await soundObject.setIsLoopingAsync(true);
+      } catch (error) {
+        console.error('Error playing sound:', error);
+      }
+    };
+
+    playSound();
+
+    return () => {
+      soundObject.stopAsync();
+      soundObject.unloadAsync();
+    };
+  }, []);
+
+  const handleStopSound = () => {
+    setIsSoundPlaying(false);
+  };
+
+  
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -54,6 +85,7 @@ export default function Page() {
             resizeMode="contain"
           />
         </View>
+        <Link href="/selection">
         <View style={{marginLeft: -5}}>
           <Animatable.Image
             source={require('../assets/start-screen/playgame-button.png')}
@@ -63,14 +95,16 @@ export default function Page() {
             duration={1000}
           />
         </View>
+        </Link>
       </View>
 
-      <View style={styles.main}>
-        <Link href="/game">Go to game</Link>
-        <Link href="/selection">Go to selection</Link>
-
-            <SampleSound />
-      </View>
+      {/* <Ionicons
+          name="volume-mute-outline"
+          size={24}
+          color="black"
+          onPress={handleStopSound}
+        />
+        {isSoundPlaying && <SampleSound />} */}
       
       </ImageBackground>
     </View>
