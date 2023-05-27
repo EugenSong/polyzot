@@ -19,13 +19,24 @@ export default (restart) => {
 
   for (let i = 0; i < 6; i++) {
     label = "platform" + i;
-    x = 100;
+    x = 70;
     y = i * 200;
     platforms[label] = Platform(
       world,
       label,
       { x: x, y: y },
-      { height: 50, width: 150 }
+      { height: 50, width: 100 }
+    );
+  }
+  for (let i = 0; i < 6; i++) {
+    label = "platform2" + i;
+    x = 330;
+    y = i * 200;
+    platforms[label] = Platform(
+      world,
+      label,
+      { x: x, y: y },
+      { height: 50, width: 100 }
     );
   }
 
