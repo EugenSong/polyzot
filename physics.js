@@ -11,7 +11,7 @@ export const physics = (entities, { time }) => {
 };
 
 export const updatePlatforms = (entities, { touches, time }) => {
-    let speed = 0.03;
+    let speed = 0.02;
     for (entity in entities) {
         const isPlatform = entity.includes('platform')
         const curPlatform = entities[entity]
@@ -31,7 +31,7 @@ export const updatePlatforms = (entities, { touches, time }) => {
 export const updatePeter = (entities, { touches }) => {
 
     //change Peter's friction so he doesn't stuck on the corner boundary
-    entities.Peter.body.friction=0.01;
+    entities.Peter.body.friction = 0.01;
 
     if (grounded) {
         touches.filter(t => t.type === 'start')
@@ -72,7 +72,7 @@ export const checkForCollision = (entities, { time, dispatch }) => {
                 closest = entity
             }
         }
-        
+
         if (closest.body.setCollided) {
             if (!closest.body.correct) {
                 closest.body.setActive(false);

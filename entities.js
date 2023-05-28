@@ -29,7 +29,7 @@ export default (restart) => {
   const invWrongImages = importAll(
     require.context("./assets/game-screen/animals/inverses", false, /\.(png)$/)
   );
-
+  console.log(wrongImages)
   let platforms = {};
 
   let spacing = 200;
@@ -70,8 +70,8 @@ export default (restart) => {
     );
   }
 
-  console.log(images);
-  
+  // console.log(images);
+
   return {
     physics: { engine, world },
 
