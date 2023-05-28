@@ -1,6 +1,7 @@
 import Matter from "matter-js";
 
 import { Dimensions } from 'react-native'
+import { log } from "react-native-reanimated";
 
 
 export const physics = (entities, { time }) => {
@@ -53,17 +54,43 @@ export const updatePeter = (entities, { touches }) => {
 }
 
 export const checkForCollision = (entities, { time }) => {
-    for (entity in entities) {
+    if (entities.Peter.body.velocity.y == 0) {
+        noPetr = Object.values(entities).filter(s => s != entities.Peter && s != entities.physics)
 
-        const isPlatform = entity.includes('platform')
-        const curPlatform = entities[entity]
+        // console.log(noPetr);
 
-        if (isPlatform) {
+        let minDist = Infinity
+        let closest = null
+        for (entity of noPetr) {
+            if (!(entity.body)) { continue; }
+            console.log(entities.Peter.body.position)
+            let dist = Matter.Vector.magnitude(Matter.Vector.sub(entities.Peter.body.position, entity.body.position))
+            if (dist < minDist) {
+                minDist = dist
+                closest = entity
+            }
+        }
+        console.log(closest)
+        if (closest) {
+            closest.body.setCollided(true);
+            if (!closest.body.correct) {
+                closest.body.setActive(false)
 
-            if (Matter.Collision.collides(curPlatform.body, entities.Peter.body) !== null) {
-                console.log("Collision occured");
             }
         }
     }
+    // for (entity in entities) {
+
+    //     const isPlatform = entity.includes('platform')
+    //     const curPlatform = entities[entity]
+
+    //     if (isPlatform) {
+    //         if (Matter.Collision.collides(curPlatform.body, entities.Peter.body) != null) {
+    //             console.log("Collision occured");
+    //             console.log(curPlatform.body.setCollided)
+    //             curPlatform.body.setCollided(true);
+    //         }
+    //     }
+    // }
     return entities;
 }

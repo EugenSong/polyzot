@@ -19,6 +19,7 @@ export default (restart) => {
 
   engine.gravity.y = 0.4;
   const images = importAll(require.context('./assets/game-screen/food', false, /\.(png)$/));
+  const invImages = importAll(require.context('./assets/game-screen/food/inverses', false, /\.(png)$/));
 
   console.log(images);
   let platforms = {};
@@ -36,6 +37,7 @@ export default (restart) => {
       { x: x, y: y },
       { height: 50, width: 100 },
       images[i * 2],
+      invImages[i * 2],
     );
   }
   for (let i = 0; i < 6; i++) {
@@ -48,6 +50,7 @@ export default (restart) => {
       { x: x, y: y },
       { height: 50, width: 100 },
       images[i * 2 + 8],
+      invImages[i * 2 + 8]
     );
   }
 
@@ -56,6 +59,5 @@ export default (restart) => {
 
     Peter: Peter(world, { x: 200, y: 0 }, { height: 80, width: 100 }),
     ...platforms,
-    // platform1: Platform(world, 'platform1', { x: 200, y: 200 }, { height: 50, width: 200 }),
   };
 };

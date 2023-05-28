@@ -1,6 +1,6 @@
 import Matter from "matter-js";
-import React from "react";
-import { View, Image } from "react-native";
+import React, { useState } from "react";
+import { View, Text, Image } from "react-native";
 
 let styles = {
     platform: {
@@ -10,7 +10,9 @@ let styles = {
     },
 };
 
-const Platform = ({ body, width, height, style = {}, source }) => {
+const Platform = ({ body, width, height, style = {}, source, invSource, correct }) => {
+    const [collided, setCollided] = useState(false)
+    const [active, setActive] = useState(true)
     const { bounds, position } = body;
     const widthBody = width;
     const heightBody = height;
@@ -18,6 +20,10 @@ const Platform = ({ body, width, height, style = {}, source }) => {
     const x = position.x - widthBody / 2;
     const y = position.y - heightBody / 2;
 
+    body.correct = correct
+    body.setCollided = setCollided
+    body.setActive = setActive
+    if (!active) return;
     return (
         <View
             style={[
@@ -25,12 +31,12 @@ const Platform = ({ body, width, height, style = {}, source }) => {
                 { width: widthBody, height: heightBody, left: x, top: y },
             ]}
         >
-            <Image source={source} style={{ width, height, ...style }} />
+            <Image source={collided ? invSource : source} style={{ width, height, ...style }} />
         </View>
     );
 };
 
-export default (world, label, pos, size, source) => {
+export default (world, label, pos, size, source, invSource) => {
     const initialPlatform = Matter.Bodies.rectangle(
         pos.x,
         pos.y,
@@ -48,6 +54,7 @@ export default (world, label, pos, size, source) => {
         width: size.width,
         height: size.height,
         source: source,
+        invSource: invSource,
         renderer: <Platform />,
     };
 };
