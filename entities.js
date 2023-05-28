@@ -68,11 +68,12 @@ export default (restart) => {
       correct,
     );
   }
+  console.log(images);
 
   return {
     physics: { engine, world },
 
-    Peter: Peter(world, { x: 200, y: 0 }, { height: 50, width: 120 }),
+    Peter: Peter(world, { x: 200, y: 0 }, { height: 30, width: 50 }),
     ...platforms,
     platformfloor: Platform(
       world,

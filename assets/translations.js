@@ -4,194 +4,52 @@ const translationsArr = [4, 5, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 4
 
 // map to store tranlation
 const translations = {
-    95: "Bear",
-    96: "Bird",
-    97: "Cat",
-    98: "Cow",
-    99: "Dog",
-    100: "Dolphin",
-    101: "Elephant",
-    102: "Fox",
-    103: "Frog",
-    104: "Monkey",
-    105: "Mouse",
-    106: "Pig",
-    107: "Rabbit",
-    108: "Sheep",
-    109: "Tiger",
-};
+    37: "Banana",
+    38: "Bread",
+    39: "Cake",
+    40: "Chicken",
+    41: "Chip",
+    42: "Cookie",
+    43: "Egg",
+    44: "Fish",
+    45: "Green Onion",
+    46: "Green Tea",
+    47: "Juice",
+    48: "Lemon",
+    49: "Melon",
+    50: "Octopus",
+    51: "Sake",
+    52: "Persimmon",
+    53: "Pie",
+    54: "Pizza",
+    55: "Potato",
+    56: "Ramen",
+    57: "Rice",
+    58: "Salad",
+    59: "Shrimp",
+    60: "Soba",
+    61: "Soup",
+    62: "Strawberry",
+    63: "Sushi",
+    64: "Tomato",
+    65: "Udon",
+    66: "Wasabi",
+    67: "Watermelon",
+    99: "Bear",
+    100: "Bird",
+    101: "Cat",
+    102: "Cow",
+    103: "Dog",
+    104: "Dolphin",
+    105: "Elephant",
+    106: "Fox",
+    107: "Frog",
+    108: "Monkey",
+    109: "Mouse",
+    110: "Pig",
+    111: "Rabbit",
+    112: "Sheep",
+    113: "Tiger",
+}
 
-translationsArr.forEach((image, index) => {
-
-    switch (translationsArr[index]) {
-        case 4:
-            // Your code for case 4
-            translations[translationsArr[index]] = 'Banana';
-            break;
-        case 5:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Bread';
-            break;
-
-        case 35:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Cake';
-            break;
-
-        case 36:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Chicken';
-            break;
-
-        case 37:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Chip';
-            break;
-
-        case 38:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Cookie';
-            break;
-
-        case 39:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Egg';
-            break;
-
-        case 40:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Fish';
-            break;
-
-        case 41:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Green Onion';
-            break;
-
-
-
-        case 42:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Green Tea';
-            break;
-
-        case 43:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Juice';
-            break;
-
-        case 44:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Lemon';
-            break;
-
-        case 45:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Melon';
-            break;
-
-        case 46:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Octopus';
-            break;
-
-
-        case 47:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Sake';
-            break;
-
-        case 48:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Persimmon';
-            break;
-
-        case 49:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Pie';
-            break;
-
-        case 50:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Pizza';
-            break;
-
-        case 51:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Potato';
-            break;
-
-        case 52:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Ramen';
-            break;
-
-
-
-        case 53:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Rice';
-            break;
-
-        case 54:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Salad';
-            break;
-
-        case 55:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Shrimp';
-            break;
-
-        case 56:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Soba';
-            break;
-
-        case 57:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Soup';
-            break;
-
-        case 58:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Strawberry';
-            break;
-
-        case 59:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Sushi';
-            break;
-
-        case 60:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Tomato';
-            break;
-
-        case 61:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Udon';
-            break;
-
-
-        case 62:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Wasabi';
-            break;
-
-
-        case 63:
-            // Your code for case 5
-            translations[translationsArr[index]] = 'Watermelon';
-            break;
-
-
-        // ... additional cases ...
-        default:
-            return;
-    }
-
-});
-
-
-export default translations; 
+export default translations;

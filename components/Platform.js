@@ -7,7 +7,6 @@ import translations from "../assets/translations";
 
 let styles = {
     platform: {
-        borderWidth: 1,
         borderColor: "black",
         position: "absolute",
     },
@@ -66,45 +65,46 @@ const Platform = ({
                                 resizeMode: "cover",
                                 transform: [{ scale: 1.2 }],
 
-              }}
-            />
-          )
-          : correct
-            ? 
-            
-            <ImageBackground 
-            
-            source={greenPlatform} resizeMode="cover" 
-            style={{width, height,transform: [{ scale: 1.2 }] }}
-            
-            >
-              <View style={{
-              width, height,
-              justifyContent: 'center',
-              alignItems: 'center',
-                display:"flex",
-                justifyContent:"center",
-                alignItems:"center"}}>
+                            }}
+                        />
+                    )
+                    : correct
+                        ?
 
-              <Text style={{  textAlign: 'center', color:"white" }}>{translations[source]}</Text>
+                        <ImageBackground
 
-            </View>
-            </ImageBackground>
-            :
-            <ImageBackground 
-            source={orangePlatform} resizeMode="cover" 
-            style={{width, height,transform: [{ scale: 1.2 }] }}
-            >
-            
-            <View style={{
-              width, height,
-              justifyContent: 'center',
-              alignItems: 'center'
-            }}>
-              <Text style={{ textAlign: 'center' }}>{translations[source]}</Text>
-            </View>
-            </ImageBackground>
-      }
+                            source={greenPlatform} resizeMode="cover"
+                            style={{ width, height, transform: [{ scale: 1.2 }] }}
+
+                        >
+                            <View style={{
+                                width, height,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center"
+                            }}>
+
+                                <Text style={{ textAlign: 'center', color: "white" }}>{translations[source]}</Text>
+
+                            </View>
+                        </ImageBackground>
+                        :
+                        <ImageBackground
+                            source={orangePlatform} resizeMode="cover"
+                            style={{ width, height, transform: [{ scale: 1.2 }] }}
+                        >
+
+                            <View style={{
+                                width, height,
+                                justifyContent: 'center',
+                                alignItems: 'center'
+                            }}>
+                                <Text style={{ textAlign: 'center' }}>{translations[source]}</Text>
+                            </View>
+                        </ImageBackground>
+            }
 
         </View>
     );
