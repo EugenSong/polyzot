@@ -38,7 +38,7 @@ export const updatePeter = (entities, { touches }) => {
             .forEach(t => {
                 Matter.Body.setVelocity(entities.Peter.body, {
                     x: 0,
-                    y: -8
+                    y: -10
                 })
                 grounded = false;
             })
