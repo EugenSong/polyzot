@@ -71,7 +71,7 @@ export const checkForCollision = (entities, { time }) => {
             }
         }
         console.log(closest)
-        if (closest) {
+        if (closest.body.setCollided) {
             closest.body.setCollided(true);
             if (!closest.body.correct) {
                 closest.body.setActive(false)
