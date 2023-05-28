@@ -36,7 +36,7 @@ const Platform = ({ body, width, height, style = {}, source, invSource, correct 
     );
 };
 
-export default (world, label, pos, size, source, invSource) => {
+export default (world, label, pos, size, source, invSource, correct) => {
     const initialPlatform = Matter.Bodies.rectangle(
         pos.x,
         pos.y,
@@ -55,6 +55,7 @@ export default (world, label, pos, size, source, invSource) => {
         height: size.height,
         source: source,
         invSource: invSource,
+        correct: correct,
         renderer: <Platform />,
     };
 };

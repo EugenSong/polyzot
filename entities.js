@@ -38,6 +38,7 @@ export default (restart) => {
       { height: 50, width: 100 },
       images[i * 2],
       invImages[i * 2],
+      true,
     );
   }
   for (let i = 0; i < 6; i++) {
@@ -50,7 +51,8 @@ export default (restart) => {
       { x: x, y: y },
       { height: 50, width: 100 },
       images[i * 2 + 8],
-      invImages[i * 2 + 8]
+      invImages[i * 2 + 8],
+      false,
     );
   }
 
