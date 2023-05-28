@@ -69,7 +69,7 @@ const Platform = ({
           )
           : correct
             ? <View style={{
-              backgroundColor: "lightgreen",
+              backgroundColor: "#0C8A6B",
               width: '100%',
               height: '100%',
               justifyContent: 'center',
