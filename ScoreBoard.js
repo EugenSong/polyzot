@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffff",
     borderRadius: 5,
     alignSelf: "flex-end",
+    borderWidth: 5,
   },
   scoreText: {
     fontSize: 20,
