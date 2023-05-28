@@ -52,19 +52,7 @@ const Platform = ({
         },
       ]}
     >
-      {/* {!collided ? <Image
-        source={source}
-        style={{
-          width: width,
-          height: height,
-          ...style,
-          resizeMode: "cover",
-          transform: [{ scale: 1.2 }],
-          backgroundColor: "lightgreen",
-        }}
-      /> :
-        <Text> {translations[source]}</Text>
-      } */}
+
 
       {
         !collided
