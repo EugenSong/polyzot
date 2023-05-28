@@ -70,7 +70,7 @@ export default function Page() {
 
           {/* <> */}
           {/* go back button */}
-          <View style={[styles.goBackContainer, 
+          <View style={[styles.goBackContainer,{ 
           marginTop: 80,
           marginLeft: 10,
           display: "flex",
@@ -78,7 +78,7 @@ export default function Page() {
           alignItems: "center",
           justifyContent: "space-between",
           zIndex:100
-        ]}>
+          }]}>
             <Link href="/selection">
               <Image
                 source={require('../assets/backbutton.png')}
@@ -110,11 +110,10 @@ export default function Page() {
 
 
             </GameEngine>
-          </View>
-          {/* </> */}
 
         </ImageBackground>
-      </View></>
+      </View>
+    </>
 
   );
 }
