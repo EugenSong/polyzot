@@ -1,4 +1,4 @@
-import { StyleSheet, TouchableOpacity, TouchableWithoutFeedback, Text, View, Image, ImageBackground, Modal } from "react-native";
+import { StyleSheet, TouchableOpacity, TouchableWithoutFeedback, Text, View, Image, ImageBackground, Modal, Button } from "react-native";
 import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Link } from "expo-router";
@@ -7,6 +7,10 @@ import { Audio } from 'expo-av';
 import { Dimensions } from 'react-native';
 import entities from '../entities';
 import { physics, updatePlatforms, updatePeter, checkForCollision } from '../physics';
+import { useNavigation, useRouter, useLocalSearchParams } from "expo-router";
+
+import { useRoute } from "@react-navigation/native"
+
 import ScoreBoard from "../ScoreBoard";
 import * as Animatable from 'react-native-animatable';
 
@@ -19,6 +23,11 @@ export default function Page() {
   const [gameEngine, setGameEngine] = useState(null)
   const [currentPoints, setCurrentPoints] = useState(0)
   const [overlayVisible, setOverlayVisible] = useState(true);
+
+
+  const router = useRouter();
+  const params = useLocalSearchParams();
+  const { } = params;
 
   const toggleOverlay = () => {
     setOverlayVisible(!overlayVisible);
@@ -56,7 +65,7 @@ export default function Page() {
       soundObject.unloadAsync();
     };
   }, []);
-  
+
   return (
     <Animatable.View animation="fadeIn" duration={3000} style={styles.container}>
     <View style={styles.container}>
@@ -71,12 +80,12 @@ export default function Page() {
             <Image
                 source={require('../assets/game-screen/instructions.png')}
                 resizeMode="contain" />
-          </View>
-        </TouchableWithoutFeedback>
-      </Modal>
-    </View>
-    
-    <View style={{ marginTop: -103 }}>
+            </View>
+          </TouchableWithoutFeedback>
+        </Modal>
+      </View >
+
+      <View style={{ marginTop: -103 }}>
         <ImageBackground
           source={require('../assets/graph-bg.png')}
           style={styles.imageBackground}
@@ -87,51 +96,57 @@ export default function Page() {
           {/* go back button */}
           <View style={styles.goBackContainer
           }>
-            <View> 
+            <View>
+
               <Link href="/selection">
                 <Image
                   source={require('../assets/backbutton.png')}
                   resizeMode="contain" />
               </Link>
             </View>
-            <View style={{marginTop: 10}}>
-            <Link href="/scoreboard" onPress={playChoice}>
-              <Animatable.Image
-                source={require('../assets/game-screen/end-game.png')}
-                resizeMode="contain"
-                animation="flash"
-                iterationCount="infinite"
-                duration={5000}
-               />
-            </Link>
+
+            <View style={{ marginTop: 10 }}>
+              <Link href={{
+                pathname: "/scoreboard",
+                // /* 1. Navigate to the details route with query params */
+                params: { points: currentPoints },
+              }}>
+                <Animatable.Image
+                  source={require('../assets/game-screen/end-game.png')}
+                  resizeMode="contain"
+                  animation="flash"
+                  iterationCount="infinite"
+                  duration={5000}
+                />
+              </Link>
             </View>
-     
-            <View style={{marginTop: -3, marginLeft: 26}}>
+
+            <View style={{ marginTop: -3, marginLeft: 26 }}>
               <ScoreBoard score={currentPoints} />
             </View>
           </View>
 
 
-            <GameEngine
-              ref={(ref) => { setGameEngine(ref); } }
-              systems={[physics, updatePlatforms, updatePeter, checkForCollision]}
-              entities={entities()}
-              running={running}
-              onEvent={(e) => {
-                switch (e.type) {
-                  case 'game_over':
-                    setRunning(false);
-                    gameEngine.stop();
-                    break;
-                  case 'new_point':
-                    setCurrentPoints(currentPoints + 1);
-                    break;
-                }
-              } }
-              style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
-            >
+          <GameEngine
+            ref={(ref) => { setGameEngine(ref); }}
+            systems={[physics, updatePlatforms, updatePeter, checkForCollision]}
+            entities={entities()}
+            running={running}
+            onEvent={(e) => {
+              switch (e.type) {
+                case 'game_over':
+                  setRunning(false);
+                  gameEngine.stop();
+                  break;
+                case 'new_point':
+                  setCurrentPoints(currentPoints + 1);
+                  break;
+              }
+            }}
+            style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
+          >
 
-            </GameEngine>
+          </GameEngine>
 
         </ImageBackground>
       </View>
@@ -174,6 +189,5 @@ const styles = StyleSheet.create({
     marginTop: 180,
     marginLeft: 10,
     zIndex: 100,
-    flexDirection: "row"
   },
 });
