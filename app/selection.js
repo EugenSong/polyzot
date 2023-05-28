@@ -1,9 +1,11 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image, ImageBackground, Button } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Image, ImageBackground, Button, Pressable } from "react-native";
 import { Link } from "expo-router";
 import * as Animatable from 'react-native-animatable';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigation } from 'expo-router';
 import { Dimensions } from 'react-native';
+import { Audio } from 'expo-av';
+
 
 // import * as SoundManager from '../soundManager';
 
@@ -24,6 +26,32 @@ export default function Page() {
   const [selectedTopic, setSelectedTopic] = useState();
   const peterImage = require('../assets/selection-screen/petr-small.png');
   const navigation = useNavigation();
+
+  const playChoice = async () => {
+    try {
+      // Load the audio file
+      const soundObject = new Audio.Sound();
+      await soundObject.loadAsync(require('../assets/choice.mp3'));
+  
+      // Play the audio
+      await soundObject.playAsync();
+    } catch (error) {
+      console.error('Error playing audio:', error);
+    }
+  };
+
+  const playSelect = async () => {
+    try {
+      // Load the audio file
+      const soundObject = new Audio.Sound();
+      await soundObject.loadAsync(require('../assets/select.mp3'));
+  
+      // Play the audio
+      await soundObject.playAsync();
+    } catch (error) {
+      console.error('Error playing audio:', error);
+    }
+  };
 
   return (
     // fades in the screen
@@ -64,7 +92,7 @@ export default function Page() {
               <TouchableOpacity
                 key={topic.value}
                 style={styles.topicItem}
-                onPress={() => setSelectedTopic(topic.value)}
+                onPress={() => {setSelectedTopic(topic.value); playSelect();}} // need to make sound
               >
                 {/* displays food selection */}
                 {topic.value === 'food' && (
@@ -87,18 +115,18 @@ export default function Page() {
                   </View>
                 )}
 
-                {/* placement of peter cursor */}
+                {/* {/* placement of peter cursor */}
                 {selectedTopic === topic.value &&
                   <View style={{ marginLeft: -30, marginTop: selectedTopic === 'animals' ? -32 : -6 }}>
                     <Image source={peterImage} />
                   </View>
-                }
+                } 
               </TouchableOpacity>
             ))}
 
             {/* selectedTopic val needs to be processed when Start Game Link pressed */}
             <View style={{ marginLeft: 33, marginTop: 35 }}>
-              <Link href="/game">
+              <Link href="/game" onPress={playChoice}>
                 <Animatable.Image
                   source={require('../assets/selection-screen/startgame-button.png')}
                   style={styles.topicTitle}

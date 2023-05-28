@@ -33,6 +33,19 @@ export default function Page() {
     setOverlayVisible(!overlayVisible);
   };
 
+  const playChoice = async () => {
+    try {
+      // Load the audio file
+      const soundObject = new Audio.Sound();
+      await soundObject.loadAsync(require('../assets/choice.mp3'));
+  
+      // Play the audio
+      await soundObject.playAsync();
+    } catch (error) {
+      console.error('Error playing audio:', error);
+    }
+  };
+
   useEffect(() => {
     const soundObject = new Audio.Sound();
     const playSound = async () => {
@@ -54,21 +67,17 @@ export default function Page() {
   }, []);
 
   return (
-    <>
-      <View style={styles.container}>
-
-
-
-
-        <Modal
-          animationType="fade"
-          transparent={true}
-          visible={overlayVisible}
-          onRequestClose={toggleOverlay}
-        >
-          <TouchableWithoutFeedback onPress={toggleOverlay}>
-            <View style={styles.overlayContainer}>
-              <Image
+    <Animatable.View animation="fadeIn" duration={3000} style={styles.container}>
+    <View style={styles.container}>
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={overlayVisible}
+        onRequestClose={toggleOverlay}
+      >
+        <TouchableWithoutFeedback onPress={toggleOverlay}>
+          <View style={styles.overlayContainer}>
+            <Image
                 source={require('../assets/game-screen/instructions.png')}
                 resizeMode="contain" />
             </View>
@@ -95,6 +104,7 @@ export default function Page() {
                   resizeMode="contain" />
               </Link>
             </View>
+
             <View style={{ marginTop: 10 }}>
               <Link href={{
                 pathname: "/scoreboard",
@@ -140,7 +150,7 @@ export default function Page() {
 
         </ImageBackground>
       </View>
-    </>
+    </Animatable.View>
 
   );
 }
