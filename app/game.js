@@ -41,9 +41,8 @@ export default function Page() {
       soundObject.unloadAsync();
     };
   }, []);
-
+  
   return (
-    
     <>
     <View style={styles.container}>
       <Modal
@@ -71,16 +70,23 @@ export default function Page() {
 
           {/* <> */}
           {/* go back button */}
-          <View style={styles.goBackContainer}>
+          <View style={[styles.goBackContainer, 
+          marginTop: 80,
+          marginLeft: 10,
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          zIndex:100
+        ]}>
             <Link href="/selection">
               <Image
                 source={require('../assets/backbutton.png')}
                 resizeMode="contain" />
             </Link>
+           <ScoreBoard score={currentPoints} />
           </View>
 
-          <View style={{ flex: 1 }}>
-            <ScoreBoard score={currentPoints} />
 
             <GameEngine
               ref={(ref) => { setGameEngine(ref); } }
@@ -109,6 +115,7 @@ export default function Page() {
 
         </ImageBackground>
       </View></>
+
   );
 }
 

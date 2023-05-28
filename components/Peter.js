@@ -24,7 +24,7 @@ const Peter = ({ body, width, height }) => {
                 { width: widthBody, height: heightBody, left: x, top: y },
             ]}
         >
-            <Image source={peterpng} />
+            <Image style={{resizeMode:"cover", width:"100%", height:"100%",transform: [{ scale: 1.2 }],}}  source={peterpng} />
         </View>
     );
 };

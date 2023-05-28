@@ -5,6 +5,9 @@ import { useState } from "react";
 import { useNavigation } from 'expo-router';
 import { Dimensions } from 'react-native';
 
+import * as SoundManager from '../soundManager';
+
+SoundManager.playSound();
 
 
 const topics = [
@@ -26,38 +29,38 @@ export default function Page() {
     // fades in the screen
     <Animatable.View animation="fadeIn" duration={3000} style={styles.container}>
 
-    <View style={styles.container}>
-      <ImageBackground
-        source={require('../assets/graph-bg.png')}
-        style={styles.imageBackground}
-        resizeMode="contain"
-      >
-          <View style={{marginTop: 80, marginLeft: 10,}}>
+      <View style={styles.container}>
+        <ImageBackground
+          source={require('../assets/graph-bg.png')}
+          style={styles.imageBackground}
+          resizeMode="contain"
+        >
+          <View style={{ marginTop: 80, marginLeft: 10, }}>
             <Link href="/">
-              <Image 
+              <Image
                 source={require('../assets/backbutton.png')}
                 resizeMode="contain"
               />
             </Link>
           </View>
 
-        <View>
-          <View style={{marginTop: -30}}>
-            <Image 
-              source={require('../assets/selection-screen/selection-title.png')}
-              style={styles.selectionTitle}
-              resizeMode="contain"
-            />
-          </View>
-          <View style={{marginLeft: 33, marginTop: -35}}>
-            <Image 
-              source={require('../assets/selection-screen/topic-text.png')}
-              style={styles.topicTitle}
-              resizeMode="contain"
-            />
-          </View>
+          <View>
+            <View style={{ marginTop: -30 }}>
+              <Image
+                source={require('../assets/selection-screen/selection-title.png')}
+                style={styles.selectionTitle}
+                resizeMode="contain"
+              />
+            </View>
+            <View style={{ marginLeft: 33, marginTop: -35 }}>
+              <Image
+                source={require('../assets/selection-screen/topic-text.png')}
+                style={styles.topicTitle}
+                resizeMode="contain"
+              />
+            </View>
 
-          {topics.map((topic) => (
+            {topics.map((topic) => (
               <TouchableOpacity
                 key={topic.value}
                 style={styles.topicItem}
@@ -85,31 +88,32 @@ export default function Page() {
                 )}
 
                 {/* placement of peter cursor */}
-              {selectedTopic === topic.value && 
-                <View style={{ marginLeft: -30, marginTop: selectedTopic === 'animals' ? -32 : -6 }}>
-                  <Image source={peterImage} />
-                </View>
-              }             
-            </TouchableOpacity>
-          ))}
+                {selectedTopic === topic.value &&
+                  <View style={{ marginLeft: -30, marginTop: selectedTopic === 'animals' ? -32 : -6 }}>
+                    <Image source={peterImage} />
+                  </View>
+                }
+              </TouchableOpacity>
+            ))}
 
-          {/* selectedTopic val needs to be processed when Start Game Link pressed */}
-          <View style={{marginLeft: 33, marginTop: 35}}>
-            <Link href="/game">
-                <Animatable.Image 
+            {/* selectedTopic val needs to be processed when Start Game Link pressed */}
+            <View style={{ marginLeft: 33, marginTop: 35 }}>
+              <Link href="/game">
+                <Animatable.Image
                   source={require('../assets/selection-screen/startgame-button.png')}
                   style={styles.topicTitle}
                   animation="pulse"
                   iterationCount="infinite"
                   duration={1000}
-                  // resizeMode="contain"
+                  
+                // resizeMode="contain"
                 />
-            </Link>
+              </Link>
+            </View>
+
           </View>
-  
+        </ImageBackground>
       </View>
-      </ImageBackground>
-    </View>
     </Animatable.View>
   );
 }
