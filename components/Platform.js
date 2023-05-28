@@ -1,6 +1,8 @@
 import Matter from "matter-js";
 import React, { useState } from "react";
-import { View, Image } from "react-native";
+import { View, Image, Text } from "react-native";
+
+import translations from "../assets/translations";
 
 let styles = {
   platform: {
@@ -34,8 +36,10 @@ const Platform = ({
   body.setActive = setActive;
   if (!active) {
     body.collisionFilter = { group: -1 };
-    return;
   }
+
+  // console.log(translations); 
+
   return (
     <View
       style={[
@@ -50,7 +54,7 @@ const Platform = ({
         },
       ]}
     >
-      <Image
+      {!collided ? <Image
         source={collided ? invSource : source}
         style={{
           width: width,
@@ -59,7 +63,9 @@ const Platform = ({
           resizeMode: "cover",
           transform: [{ scale: 1.2 }],
         }}
-      />
+      /> :
+        <Text> {translations[source]}</Text>
+      }
     </View>
   );
 };

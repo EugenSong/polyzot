@@ -67,6 +67,8 @@ export default (restart) => {
     );
   }
 
+  console.log(images);
+  
   return {
     physics: { engine, world },
 
