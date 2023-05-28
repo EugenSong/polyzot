@@ -1,7 +1,8 @@
 import Matter from "matter-js";
 import React, { useState } from "react";
-import { View, Image, Text } from "react-native";
-
+import { View, Image, Text, ImageBackground } from "react-native";
+import greenPlatform from "../assets/words/green-outline.png"
+import orangePlatform from "../assets/words/orange-outline.png"
 import translations from "../assets/translations";
 
 let styles = {
@@ -68,28 +69,40 @@ const Platform = ({
             />
           )
           : correct
-            ? <View style={{
-              backgroundColor: "lightgreen",
-              width: '100%',
-              height: '100%',
+            ? 
+            
+            <ImageBackground 
+            
+            source={greenPlatform} resizeMode="cover" 
+            style={{width, height,transform: [{ scale: 1.2 }] }}
+            
+            >
+              <View style={{
+              width, height,
               justifyContent: 'center',
-              alignItems: 'center'
-            }}>
+              alignItems: 'center',
+                display:"flex",
+                justifyContent:"center",
+                alignItems:"center"}}>
 
-              <Text style={{ textAlign: 'center' }}>{translations[source]}</Text>
+              <Text style={{  textAlign: 'center', color:"white" }}>{translations[source]}</Text>
 
             </View>
+            </ImageBackground>
             :
+            <ImageBackground 
+            source={orangePlatform} resizeMode="cover" 
+            style={{width, height,transform: [{ scale: 1.2 }] }}
+            >
+            
             <View style={{
-              width: '100%',
-              height: '100%',
+              width, height,
               justifyContent: 'center',
               alignItems: 'center'
             }}>
               <Text style={{ textAlign: 'center' }}>{translations[source]}</Text>
             </View>
-
-
+            </ImageBackground>
       }
 
     </View>

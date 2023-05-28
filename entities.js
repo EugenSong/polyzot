@@ -9,6 +9,9 @@ function importAll(r) {
   return r.keys().map(r);
 }
 
+export const platformWidth = 110;
+export const platformHeight = 40;
+
 export default (restart) => {
   let engine = Matter.Engine.create({ enableSleeping: false });
   let world = engine.world;
@@ -31,8 +34,7 @@ export default (restart) => {
 
   let spacing = 200;
   let startHeight = 200;
-  const platformWidth = 100;
-  const platformHeight = 30;
+
 
   correct_array = Array.from({ length: 6 }, () => Math.floor(Math.random() * 2))
 
