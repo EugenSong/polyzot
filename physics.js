@@ -1,8 +1,6 @@
 import Matter from "matter-js";
 
-import { Dimensions } from 'react-native'
-import { log } from "react-native-reanimated";
-
+let grounded = false;
 
 export const physics = (entities, { time }) => {
     let engine = entities['physics'].engine;
@@ -34,13 +32,16 @@ export const updatePlatforms = (entities, { touches, time }) => {
 
 
 export const updatePeter = (entities, { touches }) => {
-    touches.filter(t => t.type === 'start')
-        .forEach(t => {
-            Matter.Body.setVelocity(entities.Peter.body, {
-                x: 0,
-                y: -8
+    if (grounded) {
+        touches.filter(t => t.type === 'start')
+            .forEach(t => {
+                Matter.Body.setVelocity(entities.Peter.body, {
+                    x: 0,
+                    y: -8
+                })
+                grounded = false;
             })
-        })
+    }
     let move = touches.find(x => x.type == 'move');
     if (move) {
         const newPosition = {
@@ -63,7 +64,6 @@ export const checkForCollision = (entities, { time }) => {
         let closest = null
         for (entity of noPetr) {
             if (!(entity.body)) { continue; }
-            console.log(entities.Peter.body.position)
             let dist = Matter.Vector.magnitude(Matter.Vector.sub(entities.Peter.body.position, entity.body.position))
             if (dist < minDist) {
                 minDist = dist
@@ -74,23 +74,12 @@ export const checkForCollision = (entities, { time }) => {
         if (closest.body.setCollided) {
             closest.body.setCollided(true);
             if (!closest.body.correct) {
-                closest.body.setActive(false)
-
+                closest.body.setActive(false);
+            }
+            else {
+                grounded = true
             }
         }
     }
-    // for (entity in entities) {
-
-    //     const isPlatform = entity.includes('platform')
-    //     const curPlatform = entities[entity]
-
-    //     if (isPlatform) {
-    //         if (Matter.Collision.collides(curPlatform.body, entities.Peter.body) != null) {
-    //             console.log("Collision occured");
-    //             console.log(curPlatform.body.setCollided)
-    //             curPlatform.body.setCollided(true);
-    //         }
-    //     }
-    // }
     return entities;
 }
