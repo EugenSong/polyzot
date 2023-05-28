@@ -53,7 +53,6 @@ const Platform = ({
       ]}
     >
 
-
       {
         !collided
           ? (
@@ -77,10 +76,23 @@ const Platform = ({
               justifyContent: 'center',
               alignItems: 'center'
             }}>
+
+              <Text style={{ textAlign: 'center' }}>{translations[source]}</Text>
+
+            </View>
+            :
+            <View style={{
+              width: '100%',
+              height: '100%',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}>
               <Text style={{ textAlign: 'center' }}>{translations[source]}</Text>
             </View>
-            : <Text style={{ width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center' }}>{translations[source]}</Text>
+
+
       }
+
     </View>
   );
 };
