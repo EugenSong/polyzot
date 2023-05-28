@@ -3,7 +3,7 @@ import Platform from "./components/Platform";
 import Peter from "./components/Peter";
 
 import word1 from "./assets/game-screen/food/banana-banana.png";
-import word2 from './assets/game-screen/food/bread-pan.png'
+import word2 from "./assets/game-screen/food/bread-pan.png";
 
 import { Dimensions } from "react-native";
 
@@ -12,20 +12,24 @@ function importAll(r) {
   return r.keys().map(r);
 }
 
-
 export default (restart) => {
   let engine = Matter.Engine.create({ enableSleeping: false });
   let world = engine.world;
 
   engine.gravity.y = 0.4;
-  const images = importAll(require.context('./assets/game-screen/food', false, /\.(png)$/));
-  const invImages = importAll(require.context('./assets/game-screen/food/inverses', false, /\.(png)$/));
+  const images = importAll(
+    require.context("./assets/game-screen/food", false, /\.(png)$/)
+  );
+  const invImages = importAll(
+    require.context("./assets/game-screen/food/inverses", false, /\.(png)$/)
+  );
 
-  console.log(images);
   let platforms = {};
 
   let spacing = 200;
   let startHeight = 400;
+  const platformWidth = 100;
+  const platformHeight = 30;
 
   for (let i = 0; i < 6; i++) {
     label = "platform" + i;
@@ -35,10 +39,10 @@ export default (restart) => {
       world,
       label,
       { x: x, y: y },
-      { height: 50, width: 100 },
+      { height: platformHeight, width: platformWidth },
       images[i * 2],
       invImages[i * 2],
-      true,
+      true
     );
   }
   for (let i = 0; i < 6; i++) {
@@ -49,10 +53,10 @@ export default (restart) => {
       world,
       label,
       { x: x, y: y },
-      { height: 50, width: 100 },
+      { height: platformHeight, width: platformWidth },
       images[i * 2 + 8],
       invImages[i * 2 + 8],
-      false,
+      false
     );
   }
 
