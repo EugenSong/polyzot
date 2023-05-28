@@ -8,6 +8,8 @@ import { Dimensions } from 'react-native';
 import entities from '../entities';
 import { physics, updatePlatforms, updatePeter, checkForCollision } from '../physics';
 import ScoreBoard from "../ScoreBoard";
+import * as Animatable from 'react-native-animatable';
+
 
 const { width, height } = Dimensions.get('window');
 
@@ -72,12 +74,26 @@ export default function Page() {
           {/* go back button */}
           <View style={styles.goBackContainer
           }>
-            <Link href="/selection">
-              <Image
-                source={require('../assets/backbutton.png')}
-                resizeMode="contain" />
+            <View> 
+              <Link href="/selection">
+                <Image
+                  source={require('../assets/backbutton.png')}
+                  resizeMode="contain" />
+              </Link>
+            </View>
+            <View style={{marginTop: 10}}>
+            <Link href="/scoreboard">
+              <Animatable.Image
+                source={require('../assets/game-screen/end-game.png')}
+                resizeMode="contain"
+                animation="flash"
+                iterationCount="infinite"
+                duration={5000}
+               />
             </Link>
-            <View style={{marginTop: -50, marginRight: 15}}>
+            </View>
+     
+            <View style={{marginTop: -3, marginLeft: 26}}>
               <ScoreBoard score={currentPoints} />
             </View>
           </View>
@@ -144,5 +160,7 @@ const styles = StyleSheet.create({
   goBackContainer: {
     marginTop: 180,
     marginLeft: 10,
+    zIndex: 100,
+    flexDirection: "row"
   },
 });
