@@ -55,7 +55,7 @@ export const updatePeter = (entities, { touches }) => {
     return entities
 }
 
-export const checkForCollision = (entities, { time }) => {
+export const checkForCollision = (entities, { time, dispatch }) => {
     if (entities.Peter.body.velocity.y == 0) {
         if (disableFirst) { disableFirst = false; return entities; }
         noPetr = Object.values(entities).filter(s => s != entities.Peter && s != entities.physics)
@@ -72,15 +72,19 @@ export const checkForCollision = (entities, { time }) => {
                 closest = entity
             }
         }
-        console.log(closest)
+        // console.log(closest)
         if (closest.body.setCollided) {
-            closest.body.setCollided(true);
             if (!closest.body.correct) {
                 closest.body.setActive(false);
             }
             else {
                 grounded = true
+                if (!closest.body.collided) {
+                    dispatch({ type: 'new_point' });
+                }
+
             }
+            closest.body.setCollided(true);
         }
     }
     return entities;

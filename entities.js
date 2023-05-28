@@ -21,7 +21,7 @@ export default (restart) => {
   const images = importAll(require.context('./assets/game-screen/food', false, /\.(png)$/));
   const invImages = importAll(require.context('./assets/game-screen/food/inverses', false, /\.(png)$/));
 
-  console.log(images);
+  //console.log(images);
   let platforms = {};
 
   let spacing = 200;

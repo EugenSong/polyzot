@@ -21,6 +21,7 @@ const Platform = ({ body, width, height, style = {}, source, invSource, correct 
     const y = position.y - heightBody / 2;
 
     body.correct = correct
+    body.collided = collided
     body.setCollided = setCollided
     body.setActive = setActive
     if (!active) {
