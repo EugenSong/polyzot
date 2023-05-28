@@ -5,11 +5,10 @@ import { View, Image, Text } from "react-native";
 import translations from "../assets/translations";
 
 let styles = {
-  platform: {
-    borderWidth: 1,
-    borderColor: "black",
-    position: "absolute",
-  },
+    platform: {
+        borderColor: "black",
+        position: "absolute",
+    },
 };
 
 const Platform = ({

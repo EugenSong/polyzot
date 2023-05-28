@@ -5,7 +5,6 @@ import peterpng from "../assets/petr-medium.png";
 
 let styles = {
     peter: {
-        borderWidth: 1,
         borderColor: "black",
         position: "absolute",
     },
