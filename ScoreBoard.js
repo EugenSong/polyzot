@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   },
   scoreBoard: {
     padding: 10,
-    backgroundColor: "rgba(255,255,255,0.5)",
+    backgroundColor: "#ffff",
     borderRadius: 5,
     alignSelf: "flex-end",
   },

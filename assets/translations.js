@@ -191,8 +191,6 @@ translationsArr.forEach((image, index) => {
             return;
     }
 
-    console.log(translations);
-
 });
 
 

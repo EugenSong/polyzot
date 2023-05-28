@@ -38,8 +38,6 @@ const Platform = ({
     body.collisionFilter = { group: -1 };
   }
 
-  // console.log(translations); 
-
   return (
     <View
       style={[

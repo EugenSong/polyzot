@@ -59,8 +59,7 @@ export const checkForCollision = (entities, { time, dispatch }) => {
     if (entities.Peter.body.velocity.y == 0) {
         if (disableFirst) { disableFirst = false; console.log('ignore'); return entities; }
         noPetr = Object.values(entities).filter(s => s != entities.Peter && s != entities.physics)
-
-        // console.log(noPetr);
+        
 
         let minDist = Infinity
         let closest = null

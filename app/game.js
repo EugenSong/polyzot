@@ -29,6 +29,7 @@ export default function Page() {
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-between",
+          zIndex:100
         }}
       >
         <Link href="/selection">
