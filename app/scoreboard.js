@@ -4,11 +4,20 @@ import { Audio } from 'expo-av';
 import { useEffect } from "react";
 import * as Animatable from 'react-native-animatable';
 import { Dimensions } from 'react-native';
-
+import { useNavigation, useRouter, useLocalSearchParams } from "expo-router";
 
 const { width, height } = Dimensions.get('window');
 
 export default function Page() {
+
+  const navigation = useNavigation();
+  const router = useRouter();
+  const params = useLocalSearchParams();
+  const { points } = params;
+  console.log(points)
+
+
+
   useEffect(() => {
     const soundObject = new Audio.Sound();
     const playSound = async () => {
@@ -29,54 +38,68 @@ export default function Page() {
     };
   }, []);
 
+
+
   return (
     <Animatable.View animation="fadeIn" duration={1000} style={styles.container}>
-    <View style={styles.container}>
-      <ImageBackground
-        source={require('../assets/graph-bg.png')}
-        style={styles.imageBackground}
-        resizeMode="contain"
-      >
-      <View style={{marginTop: 80, marginLeft: 10,}}>
-        <Link href="/">
-          <Image 
-            source={require('../assets/backbutton.png')}
-            resizeMode="contain"
-          />
-        </Link>
-      </View>
-      <View style={styles.title}>
-          <Image
-            source={require('../assets/start-screen/polyzot-jp.png')}
-            style={styles.polyzotJP}
-            resizeMode="contain"
-          />
-          <View style={{ marginLeft: -20 }}>
-            <Animatable.Image
-              source={require('../assets/scoreboard-screen/petr-medium.png')}
-              // style={styles.polyzotEng}
-              animation="bounce"
-              iterationCount="infinite"
-              duration={5000}
-            // direction="alternate"
-            // resizeMode="contain"
-            />
+      <View style={styles.container}>
+        <ImageBackground
+          source={require('../assets/graph-bg.png')}
+          style={styles.imageBackground}
+          resizeMode="contain"
+        >
+          <View style={{ marginTop: 80, marginLeft: 10, }}>
+            <Link href="/">
+              <Image
+                source={require('../assets/backbutton.png')}
+                resizeMode="contain"
+              />
+            </Link>
           </View>
-          <Image
-            source={require('../assets/scoreboard-screen/right.png')}
-            style={styles.right}
-            resizeMode="contain"
-          />
-          <Image
-            source={require('../assets/scoreboard-screen/wrong.png')}
-            style={styles.wrong}
-            resizeMode="contain"
-          />
-      </View>
+          <View style={styles.title}>
+            <Image
+              source={require('../assets/start-screen/polyzot-jp.png')}
+              style={styles.polyzotJP}
+              resizeMode="contain"
+            />
+            <View style={{ marginLeft: -20 }}>
+              <Animatable.Image
+                source={require('../assets/scoreboard-screen/petr-medium.png')}
+                // style={styles.polyzotEng}
+                animation="bounce"
+                iterationCount="infinite"
+                duration={5000}
+              // direction="alternate"
+              // resizeMode="contain"
+              />
+            </View>
 
-      </ImageBackground>
-    </View>
-    </Animatable.View>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Image
+                source={require('../assets/scoreboard-screen/right.png')}
+                style={styles.right}
+                resizeMode="contain"
+              />
+              <Text style={{
+                fontSize: 75,
+                fontWeight: 'bold',
+                color: '#E55807',
+              }}>{points} </Text>
+            </View>
+
+
+            {/* <Image
+              source={require('../assets/scoreboard-screen/wrong.png')}
+              style={styles.wrong}
+              resizeMode="contain"
+            /> */}
+
+            
+          </View>
+
+        </ImageBackground>
+      </View >
+    </Animatable.View >
   );
 }
 
