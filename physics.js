@@ -1,5 +1,6 @@
 import Matter from "matter-js";
 
+let grounded = false;
 
 export const physics = (entities, { time }) => {
     let engine = entities['physics'].engine;
