@@ -35,6 +35,7 @@ export default (restart) => {
   let spacing = 200;
   let startHeight = 200;
 
+  console.log(wrongImages)
 
   correct_array = Array.from({ length: 6 }, () => Math.floor(Math.random() * 2))
 
