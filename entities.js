@@ -27,7 +27,7 @@ export default (restart) => {
   let platforms = {};
 
   let spacing = 200;
-  let startHeight = 400;
+  let startHeight = 200;
   const platformWidth = 100;
   const platformHeight = 30;
 

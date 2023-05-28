@@ -4,9 +4,9 @@ let grounded = false;
 let disableFirst = true;
 
 export const physics = (entities, { time }) => {
-  let engine = entities["physics"].engine;
-  Matter.Engine.update(engine, time.delta);
-  return entities;
+    let engine = entities["physics"].engine;
+    Matter.Engine.update(engine, time.delta);
+    return entities;
 };
 
 export const updatePlatforms = (entities, { touches, time }) => {
@@ -15,16 +15,16 @@ export const updatePlatforms = (entities, { touches, time }) => {
         const isPlatform = entity.includes('platform')
         const curPlatform = entities[entity]
 
-    if (isPlatform) {
-      const newPosition = {
-        x: curPlatform.body.position.x,
-        y: curPlatform.body.position.y + speed * time.delta,
-      };
-      Matter.Body.setPosition(curPlatform.body, newPosition);
+        if (isPlatform) {
+            const newPosition = {
+                x: curPlatform.body.position.x,
+                y: curPlatform.body.position.y + speed * time.delta,
+            };
+            Matter.Body.setPosition(curPlatform.body, newPosition);
+        }
     }
-  }
 
-  return entities;
+    return entities;
 };
 
 export const updatePeter = (entities, { touches }) => {
@@ -47,7 +47,7 @@ export const updatePeter = (entities, { touches }) => {
         Matter.Body.setPosition(entities.Peter.body, newPosition)
     }
 
-  return entities;
+    return entities;
 };
 
 export const checkForCollision = (entities, { time, dispatch }) => {
@@ -82,32 +82,5 @@ export const checkForCollision = (entities, { time, dispatch }) => {
             closest.body.setCollided(true);
         }
     }
-    noPetr = Object.values(entities).filter(
-      (s) => s != entities.Peter && s != entities.physics
-    );
-
-    let minDist = Infinity;
-    let closest = null;
-    for (entity of noPetr) {
-      if (!entity.body) {
-        continue;
-      }
-      let dist = Matter.Vector.magnitude(
-        Matter.Vector.sub(entities.Peter.body.position, entity.body.position)
-      );
-      if (dist < minDist) {
-        minDist = dist;
-        closest = entity;
-      }
-    }
-    if (closest.body.setCollided) {
-      closest.body.setCollided(true);
-      if (!closest.body.correct) {
-        closest.body.setActive(false);
-      } else {
-        grounded = true;
-      }
-    }
-  }
-  return entities;
+    return entities;
 };
