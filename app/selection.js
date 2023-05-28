@@ -5,9 +5,9 @@ import { useState } from "react";
 import { useNavigation } from 'expo-router';
 import { Dimensions } from 'react-native';
 
-import * as SoundManager from '../soundManager';
+// import * as SoundManager from '../soundManager';
 
-SoundManager.playSound();
+// SoundManager.playSound();
 
 
 const topics = [
