@@ -70,21 +70,16 @@ export default function Page() {
 
           {/* <> */}
           {/* go back button */}
-          <View style={[styles.goBackContainer,{ 
-          marginTop: 80,
-          marginLeft: 10,
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "space-between",
-          zIndex:100
-          }]}>
+          <View style={styles.goBackContainer
+          }>
             <Link href="/selection">
               <Image
                 source={require('../assets/backbutton.png')}
                 resizeMode="contain" />
             </Link>
-           <ScoreBoard score={currentPoints} />
+            <View style={{marginTop: -50, marginRight: 15}}>
+              <ScoreBoard score={currentPoints} />
+            </View>
           </View>
 
 
@@ -106,8 +101,6 @@ export default function Page() {
               } }
               style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
             >
-
-
 
             </GameEngine>
 
