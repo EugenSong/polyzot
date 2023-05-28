@@ -23,6 +23,12 @@ export default (restart) => {
   const invImages = importAll(
     require.context("./assets/game-screen/food/inverses", false, /\.(png)$/)
   );
+  const wrongImages = importAll(
+    require.context("./assets/game-screen/animals", false, /\.(png)$/)
+  );
+  const invWrongImages = importAll(
+    require.context("./assets/game-screen/animals/inverses", false, /\.(png)$/)
+  );
 
   let platforms = {};
 
@@ -31,32 +37,36 @@ export default (restart) => {
   const platformWidth = 100;
   const platformHeight = 30;
 
+  correct_array = Array.from({ length: 6 }, () => Math.floor(Math.random() * 2))
+
   for (let i = 0; i < 6; i++) {
     label = "platform" + i;
     x = 70;
-    y = i * 200;
+    y = startHeight - i * 200;
+    correct = correct_array[i]
     platforms[label] = Platform(
       world,
       label,
       { x: x, y: y },
       { height: platformHeight, width: platformWidth },
-      images[i * 2],
-      invImages[i * 2],
-      true
+      correct ? images[i] : wrongImages[i],
+      correct ? invImages[i] : invWrongImages[i],
+      correct,
     );
   }
   for (let i = 0; i < 6; i++) {
     label = "platform2" + i;
     x = 330;
-    y = i * 200;
+    y = startHeight - i * 200;
+    correct = 1 - correct_array[i]
     platforms[label] = Platform(
       world,
       label,
       { x: x, y: y },
       { height: platformHeight, width: platformWidth },
-      images[i * 2 + 8],
-      invImages[i * 2 + 8],
-      false
+      correct ? images[i + 6] : wrongImages[i + 6],
+      correct ? invImages[i + 6] : invWrongImages[i + 6],
+      correct,
     );
   }
 
@@ -68,7 +78,7 @@ export default (restart) => {
     platformfloor: Platform(
       world,
       "platformfloor",
-      { x: 200, y: startHeight + 500 },
+      { x: 200, y: startHeight + 200 },
       { height: 50, width: 600 },
       null,
       null,

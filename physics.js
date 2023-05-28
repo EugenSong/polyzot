@@ -1,6 +1,7 @@
 import Matter from "matter-js";
 
 let grounded = false;
+
 let disableFirst = true;
 
 export const physics = (entities, { time }) => {
@@ -10,7 +11,7 @@ export const physics = (entities, { time }) => {
 };
 
 export const updatePlatforms = (entities, { touches, time }) => {
-    let speed = 0.005;
+    let speed = 0.03;
     for (entity in entities) {
         const isPlatform = entity.includes('platform')
         const curPlatform = entities[entity]
@@ -33,7 +34,7 @@ export const updatePeter = (entities, { touches }) => {
             .forEach(t => {
                 Matter.Body.setVelocity(entities.Peter.body, {
                     x: 0,
-                    y: -10
+                    y: -8.5
                 })
                 grounded = false;
             })
@@ -52,7 +53,7 @@ export const updatePeter = (entities, { touches }) => {
 
 export const checkForCollision = (entities, { time, dispatch }) => {
     if (entities.Peter.body.velocity.y == 0) {
-        if (disableFirst) { disableFirst = false; return entities; }
+        if (disableFirst) { disableFirst = false; console.log('ignore'); return entities; }
         noPetr = Object.values(entities).filter(s => s != entities.Peter && s != entities.physics)
 
         // console.log(noPetr);
