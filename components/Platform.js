@@ -4,7 +4,6 @@ import { View, Text, Image } from "react-native";
 
 let styles = {
     platform: {
-        borderWidth: 1,
         borderColor: "black",
         position: "absolute",
     },

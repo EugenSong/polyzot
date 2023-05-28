@@ -74,6 +74,7 @@ export default function Page() {
             // direction="alternate"
             // resizeMode="contain"
             />
+            
           </View>
           <View style={{
             marginLeft: -12,
@@ -108,6 +109,7 @@ export default function Page() {
           onPress={handleStopSound}
         />
         {isSoundPlaying && <SampleSound />} */}
+        <Link href="/scoreboard">Scoreboard</Link>
 
       </ImageBackground>
     </View>
