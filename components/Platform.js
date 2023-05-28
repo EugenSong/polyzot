@@ -52,17 +52,34 @@ const Platform = ({
         },
       ]}
     >
-      {!collided ? <Image
-        source={collided ? invSource : source}
-        style={{
-          width: width,
-          height: height,
-          ...style,
-          resizeMode: "cover",
-          transform: [{ scale: 1.2 }],
-        }}
-      /> :
-        <Text> {translations[source]}</Text>
+
+
+      {
+        !collided
+          ? (
+            <Image
+              source={source}
+              style={{
+                width: width,
+                height: height,
+                ...style,
+                resizeMode: "cover",
+                transform: [{ scale: 1.2 }],
+
+              }}
+            />
+          )
+          : correct
+            ? <View style={{
+              backgroundColor: "lightgreen",
+              width: '100%',
+              height: '100%',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}>
+              <Text style={{ textAlign: 'center' }}>{translations[source]}</Text>
+            </View>
+            : <Text style={{ width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center' }}>{translations[source]}</Text>
       }
     </View>
   );
