@@ -11,7 +11,7 @@ export const physics = (entities, { time }) => {
 
 
 export const updatePlatforms = (entities, { touches, time }) => {
-    let speed = 0.02;
+    let speed = 0.005;
     for (entity in entities) {
         const isPlatform = entity.includes('platform')
         const curPlatform = entities[entity]
