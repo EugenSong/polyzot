@@ -1,9 +1,5 @@
 import Matter from "matter-js";
 
-import { Dimensions } from 'react-native'
-import { log } from "react-native-reanimated";
-
-let grounded = false
 
 export const physics = (entities, { time }) => {
     let engine = entities['physics'].engine;
@@ -73,7 +69,8 @@ export const checkForCollision = (entities, { time }) => {
                 closest = entity
             }
         }
-        if (closest) {
+        console.log(closest)
+        if (closest.body.setCollided) {
             closest.body.setCollided(true);
             if (!closest.body.correct) {
                 closest.body.setActive(false);
