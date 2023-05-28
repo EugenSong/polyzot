@@ -8,6 +8,8 @@ import { Dimensions } from 'react-native';
 import entities from '../entities';
 import { physics, updatePlatforms, updatePeter, checkForCollision } from '../physics';
 import ScoreBoard from "../ScoreBoard";
+import * as Animatable from 'react-native-animatable';
+
 
 const { width, height } = Dimensions.get('window');
 
@@ -70,21 +72,30 @@ export default function Page() {
 
           {/* <> */}
           {/* go back button */}
-          <View style={[styles.goBackContainer,{ 
-          marginTop: 80,
-          marginLeft: 10,
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "space-between",
-          zIndex:100
-          }]}>
-            <Link href="/selection">
-              <Image
-                source={require('../assets/backbutton.png')}
-                resizeMode="contain" />
+          <View style={styles.goBackContainer
+          }>
+            <View> 
+              <Link href="/selection">
+                <Image
+                  source={require('../assets/backbutton.png')}
+                  resizeMode="contain" />
+              </Link>
+            </View>
+            <View style={{marginTop: 10}}>
+            <Link href="/scoreboard">
+              <Animatable.Image
+                source={require('../assets/game-screen/end-game.png')}
+                resizeMode="contain"
+                animation="flash"
+                iterationCount="infinite"
+                duration={5000}
+               />
             </Link>
-           <ScoreBoard score={currentPoints} />
+            </View>
+     
+            <View style={{marginTop: -3, marginLeft: 26}}>
+              <ScoreBoard score={currentPoints} />
+            </View>
           </View>
 
 
@@ -106,8 +117,6 @@ export default function Page() {
               } }
               style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
             >
-
-
 
             </GameEngine>
 
@@ -151,5 +160,7 @@ const styles = StyleSheet.create({
   goBackContainer: {
     marginTop: 180,
     marginLeft: 10,
+    zIndex: 100,
+    flexDirection: "row"
   },
 });

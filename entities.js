@@ -29,7 +29,7 @@ export default (restart) => {
   const invWrongImages = importAll(
     require.context("./assets/game-screen/animals/inverses", false, /\.(png)$/)
   );
-  console.log(wrongImages)
+
   let platforms = {};
 
   let spacing = 200;
@@ -40,8 +40,8 @@ export default (restart) => {
 
   for (let i = 0; i < 6; i++) {
     label = "platform" + i;
-    x = 70;
-    y = startHeight - i * 200;
+    x = 100;
+    y = startHeight - i * spacing;
     correct = correct_array[i]
     platforms[label] = Platform(
       world,
@@ -55,8 +55,8 @@ export default (restart) => {
   }
   for (let i = 0; i < 6; i++) {
     label = "platform2" + i;
-    x = 330;
-    y = startHeight - i * 200;
+    x = 300;
+    y = startHeight - i * spacing;
     correct = 1 - correct_array[i]
     platforms[label] = Platform(
       world,
