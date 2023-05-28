@@ -29,6 +29,10 @@ export const updatePlatforms = (entities, { touches, time }) => {
 };
 
 export const updatePeter = (entities, { touches }) => {
+
+    //change Peter's friction so he doesn't stuck on the corner boundary
+    entities.Peter.body.friction=0.01;
+
     if (grounded) {
         touches.filter(t => t.type === 'start')
             .forEach(t => {
@@ -68,7 +72,7 @@ export const checkForCollision = (entities, { time, dispatch }) => {
                 closest = entity
             }
         }
-        // console.log(closest)
+        
         if (closest.body.setCollided) {
             if (!closest.body.correct) {
                 closest.body.setActive(false);
