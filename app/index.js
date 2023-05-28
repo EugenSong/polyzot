@@ -2,9 +2,10 @@ import { StyleSheet, Text, View, ImageBackground, Image } from "react-native";
 import { Link } from "expo-router";
 import SampleSound from "../sample-sound";
 import * as Animatable from 'react-native-animatable';
-import { Ionicons } from '@expo/vector-icons'; 
-import { useRef, useState, useEffect} from "react";
+import { Ionicons } from '@expo/vector-icons';
+import { useRef, useState, useEffect } from "react";
 import { Audio } from 'expo-av';
+
 
 
 const zoomOut = {
@@ -45,11 +46,11 @@ export default function Page() {
     };
   }, []);
 
-  const handleStopSound = () => {
-    setIsSoundPlaying(false);
-  };
+  // const handleStopSound = async () => {
+  //   await SampleSound.stopSound();
+  // };
 
-  
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -57,55 +58,57 @@ export default function Page() {
         style={styles.imageBackground}
         resizeMode="contain"
       >
-      <View style={styles.title}>
-        <Image 
-          source={require('../assets/start-screen/polyzot-jp.png')}
-          style={styles.polyzotJP}
-          resizeMode="contain"
-        />
-        <View style={{marginLeft: -20}}>
-          <Animatable.Image 
-            source={require('../assets/start-screen/polyzot-eng.png')}
-            style={styles.polyzotEng}
-            animation="flash" 
-            iterationCount="infinite"
-            duration={5000}
-            // direction="alternate"
-            // resizeMode="contain"
-          />
-        </View>
-        <View style={{marginLeft: -12,    
-        alignItems: 'center'}}>
-          <Animatable.Image 
-            source={require('../assets/start-screen/petr.png')}
-            style={styles.petr}
-            // animation="flash"
-            iterationCount="infinite"
-            duration={500}
+        <View style={styles.title}>
+          <Image
+            source={require('../assets/start-screen/polyzot-jp.png')}
+            style={styles.polyzotJP}
             resizeMode="contain"
           />
+          <View style={{ marginLeft: -20 }}>
+            <Animatable.Image
+              source={require('../assets/start-screen/polyzot-eng.png')}
+              style={styles.polyzotEng}
+              animation="flash"
+              iterationCount="infinite"
+              duration={5000}
+            // direction="alternate"
+            // resizeMode="contain"
+            />
+          </View>
+          <View style={{
+            marginLeft: -12,
+            alignItems: 'center'
+          }}>
+            <Animatable.Image
+              source={require('../assets/start-screen/petr.png')}
+              style={styles.petr}
+              // animation="flash"
+              iterationCount="infinite"
+              duration={500}
+              resizeMode="contain"
+            />
+          </View>
+          <Link href="/selection">
+            <View style={{ marginLeft: -5 }}>
+              <Animatable.Image
+                source={require('../assets/start-screen/playgame-button.png')}
+                style={styles.gamebutton}
+                animation="pulse"
+                iterationCount="infinite"
+                duration={1000}
+              />
+            </View>
+          </Link>
         </View>
-        <Link href="/selection">
-        <View style={{marginLeft: -5}}>
-          <Animatable.Image
-            source={require('../assets/start-screen/playgame-button.png')}
-            style={styles.gamebutton}
-            animation="pulse"
-            iterationCount="infinite"
-            duration={1000}
-          />
-        </View>
-        </Link>
-      </View>
 
-      {/* <Ionicons
+        {/* <Ionicons
           name="volume-mute-outline"
           size={24}
           color="black"
           onPress={handleStopSound}
         />
         {isSoundPlaying && <SampleSound />} */}
-      
+
       </ImageBackground>
     </View>
   );
@@ -150,7 +153,7 @@ const styles = StyleSheet.create({
   petr: {
     height: 180,
   },
-  gamebutton:{
+  gamebutton: {
     height: 86
   }
 });

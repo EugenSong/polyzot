@@ -1,8 +1,5 @@
 import Matter from "matter-js";
 
-import { Dimensions } from 'react-native'
-import { log } from "react-native-reanimated";
-
 
 export const physics = (entities, { time }) => {
     let engine = entities['physics'].engine;
@@ -71,7 +68,7 @@ export const checkForCollision = (entities, { time }) => {
             }
         }
         console.log(closest)
-        if (closest) {
+        if (closest.body.setCollided) {
             closest.body.setCollided(true);
             if (!closest.body.correct) {
                 closest.body.setActive(false)
@@ -79,18 +76,5 @@ export const checkForCollision = (entities, { time }) => {
             }
         }
     }
-    // for (entity in entities) {
-
-    //     const isPlatform = entity.includes('platform')
-    //     const curPlatform = entities[entity]
-
-    //     if (isPlatform) {
-    //         if (Matter.Collision.collides(curPlatform.body, entities.Peter.body) != null) {
-    //             console.log("Collision occured");
-    //             console.log(curPlatform.body.setCollided)
-    //             curPlatform.body.setCollided(true);
-    //         }
-    //     }
-    // }
     return entities;
 }
