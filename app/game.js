@@ -1,4 +1,4 @@
-import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
+import { StyleSheet, TouchableOpacity, Text, View, Image } from "react-native";
 import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Link } from "expo-router";
@@ -14,33 +14,42 @@ export default function Page() {
   const [gameEngine, setGameEngine] = useState(null)
   const [currentPoints, setCurrentPoints] = useState(0)
   return (
-    <View style={{ flex: 1 }}>
-
-      <ScoreBoard score={currentPoints} />
-
-      <GameEngine
-        ref={(ref) => { setGameEngine(ref) }}
-        systems={[physics, updatePlatforms, updatePeter, checkForCollision]} 
-        entities={entities()}
-        running={running}
-        onEvent={(e) => {
-          switch (e.type) {
-            case 'game_over':
-              setRunning(false)
-              gameEngine.stop()
-              break;
-            case 'new_point':
-              setCurrentPoints(currentPoints + 1)
-              break;
-          }
-        }}
-        style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
-      >
-
-
-
-      </GameEngine>
+    <>
+    {/* go back button */}
+    <View style={{ marginTop: 80, marginLeft: 10, }}>
+      <Link href="/selection">
+        <Image
+          source={require('../assets/backbutton.png')}
+          resizeMode="contain" />
+      </Link>
     </View>
+    
+    <View style={{ flex: 1 }}>
+        <ScoreBoard score={currentPoints} />
+
+        <GameEngine
+          ref={(ref) => { setGameEngine(ref); } }
+          systems={[physics, updatePlatforms, updatePeter, checkForCollision]}
+          entities={entities()}
+          running={running}
+          onEvent={(e) => {
+            switch (e.type) {
+              case 'game_over':
+                setRunning(false);
+                gameEngine.stop();
+                break;
+              case 'new_point':
+                setCurrentPoints(currentPoints + 1);
+                break;
+            }
+          } }
+          style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
+        >
+
+
+
+        </GameEngine>
+      </View></>
   );
 }
 
