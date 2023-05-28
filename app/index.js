@@ -26,6 +26,19 @@ const zoomOut = {
 export default function Page() {
   const [isSoundPlaying, setIsSoundPlaying] = useState(true);
 
+  const playChoice = async () => {
+    try {
+      // Load the audio file
+      const soundObject = new Audio.Sound();
+      await soundObject.loadAsync(require('../assets/choice.mp3'));
+  
+      // Play the audio
+      await soundObject.playAsync();
+    } catch (error) {
+      console.error('Error playing audio:', error);
+    }
+  };
+
   useEffect(() => {
     const soundObject = new Audio.Sound();
     const playSound = async () => {
@@ -89,7 +102,7 @@ export default function Page() {
               resizeMode="contain"
             />
           </View>
-          <Link href="/selection">
+          <Link href="/selection" onPress={playChoice}>
             <View style={{ marginLeft: -5 }}>
               <Animatable.Image
                 source={require('../assets/start-screen/playgame-button.png')}

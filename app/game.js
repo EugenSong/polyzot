@@ -24,6 +24,19 @@ export default function Page() {
     setOverlayVisible(!overlayVisible);
   };
 
+  const playChoice = async () => {
+    try {
+      // Load the audio file
+      const soundObject = new Audio.Sound();
+      await soundObject.loadAsync(require('../assets/choice.mp3'));
+  
+      // Play the audio
+      await soundObject.playAsync();
+    } catch (error) {
+      console.error('Error playing audio:', error);
+    }
+  };
+
   useEffect(() => {
     const soundObject = new Audio.Sound();
     const playSound = async () => {
@@ -45,7 +58,7 @@ export default function Page() {
   }, []);
   
   return (
-    <>
+    <Animatable.View animation="fadeIn" duration={3000} style={styles.container}>
     <View style={styles.container}>
       <Modal
         animationType="fade"
@@ -82,7 +95,7 @@ export default function Page() {
               </Link>
             </View>
             <View style={{marginTop: 10}}>
-            <Link href="/scoreboard">
+            <Link href="/scoreboard" onPress={playChoice}>
               <Animatable.Image
                 source={require('../assets/game-screen/end-game.png')}
                 resizeMode="contain"
@@ -122,7 +135,7 @@ export default function Page() {
 
         </ImageBackground>
       </View>
-    </>
+    </Animatable.View>
 
   );
 }

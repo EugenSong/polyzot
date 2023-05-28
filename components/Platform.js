@@ -108,7 +108,7 @@ const Platform = ({
 
         </View>
     );
-
+          }
 
 export default (world, label, pos, size, source, invSource, correct) => {
     const initialPlatform = Matter.Bodies.rectangle(
