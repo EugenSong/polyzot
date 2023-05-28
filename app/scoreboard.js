@@ -81,18 +81,26 @@ export default function Page() {
                 resizeMode="contain"
               />
               <Text style={{
-                fontSize: 75,
+                fontSize: 45,
                 fontWeight: 'bold',
                 color: '#E55807',
+                marginTop: 10
               }}>{points} </Text>
             </View>
 
-
-            {/* <Image
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Image
               source={require('../assets/scoreboard-screen/wrong.png')}
               style={styles.wrong}
               resizeMode="contain"
-            /> */}
+            />
+            <Text style={{
+                fontSize: 45,
+                fontWeight: 'bold',
+                color: '#0C8A6B',
+                marginTop: 10
+              }}>4 </Text>
+            </View>
 
             
           </View>
@@ -139,10 +147,10 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   right: {
-    marginLeft: -105,
+    marginLeft: -30,
     marginTop: 10
   },
   wrong: {
-    marginLeft: -120,
+    marginLeft: -45,
   }
 });
