@@ -109,7 +109,6 @@ export default function Page() {
           onPress={handleStopSound}
         />
         {isSoundPlaying && <SampleSound />} */}
-        <Link href="/scoreboard">Scoreboard</Link>
 
       </ImageBackground>
     </View>
