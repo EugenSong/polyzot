@@ -1,6 +1,7 @@
 import Matter from "matter-js";
 
 let grounded = false;
+let disableFirst = true;
 
 export const physics = (entities, { time }) => {
     let engine = entities['physics'].engine;
@@ -56,6 +57,7 @@ export const updatePeter = (entities, { touches }) => {
 
 export const checkForCollision = (entities, { time }) => {
     if (entities.Peter.body.velocity.y == 0) {
+        if (disableFirst) { disableFirst = false; return entities; }
         noPetr = Object.values(entities).filter(s => s != entities.Peter && s != entities.physics)
 
         // console.log(noPetr);
