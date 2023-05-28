@@ -23,7 +23,10 @@ const Platform = ({ body, width, height, style = {}, source, invSource, correct 
     body.correct = correct
     body.setCollided = setCollided
     body.setActive = setActive
-    if (!active) return;
+    if (!active) {
+        body.collisionFilter = { group: -1 };
+        return;
+    }
     return (
         <View
             style={[
