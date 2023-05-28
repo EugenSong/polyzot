@@ -189,5 +189,6 @@ const styles = StyleSheet.create({
     marginTop: 180,
     marginLeft: 10,
     zIndex: 100,
+    flexDirection: "row"
   },
 });
