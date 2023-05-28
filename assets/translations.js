@@ -4,21 +4,21 @@ const translationsArr = [4, 5, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 4
 
 // map to store tranlation
 const translations = {
-    95: "bear",
-    96: "bird",
-    97: "cat",
-    98: "cow",
-    99: "dog",
-    100: "dolphin",
-    101: "elephant",
-    102: "fox",
-    103: "frog",
-    104: "monkey",
-    105: "mouse",
-    106: "pig",
-    107: "rabbit",
-    108: "sheep",
-    109: "tiger",
+    95: "Bear",
+    96: "Bird",
+    97: "Cat",
+    98: "Cow",
+    99: "Dog",
+    100: "Dolphin",
+    101: "Elephant",
+    102: "Fox",
+    103: "Frog",
+    104: "Monkey",
+    105: "Mouse",
+    106: "Pig",
+    107: "Rabbit",
+    108: "Sheep",
+    109: "Tiger",
 };
 
 translationsArr.forEach((image, index) => {
