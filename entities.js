@@ -2,9 +2,6 @@ import Matter from "matter-js";
 import Platform from "./components/Platform";
 import Peter from "./components/Peter";
 
-import word1 from "./assets/game-screen/food/banana-banana.png";
-import word2 from "./assets/game-screen/food/bread-pan.png";
-
 import { Dimensions } from "react-native";
 
 const { width, height } = Dimensions.get("window");
@@ -73,7 +70,7 @@ export default (restart) => {
   return {
     physics: { engine, world },
 
-    Peter: Peter(world, { x: 200, y: 0 }, { height: 80, width: 100 }),
+    Peter: Peter(world, { x: 200, y: 0 }, { height: 50, width: 120 }),
     ...platforms,
     platformfloor: Platform(
       world,
