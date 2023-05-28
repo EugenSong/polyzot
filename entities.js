@@ -65,5 +65,14 @@ export default (restart) => {
 
     Peter: Peter(world, { x: 200, y: 0 }, { height: 80, width: 100 }),
     ...platforms,
+    platformfloor: Platform(
+      world,
+      "platformfloor",
+      { x: 200, y: startHeight + 500 },
+      { height: 50, width: 600 },
+      null,
+      null,
+      true
+    ),
   };
 };
